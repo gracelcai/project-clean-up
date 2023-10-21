@@ -15,7 +15,7 @@ export default function SignUp({navigation}){
                 <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)}/>
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={alert(email + " " + name + " " + password)}>Sign Up</Pressable>
+                <Pressable style={styles.button} onPress={() => {alert(email + " " + name + " " + password)}}>Sign Up</Pressable>
             </View>
         </View>
     )
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 24,
         fontSize: 20,
-        backgroundColor: "#BFCEB8",
+        backgroundColor: "#C5E2FF",
         justifyContent: "center"
     }
 });
