@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-
+import axios from "axios";
 
 
 export default function SignUp({navigation}){
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    
+    async function handleSubmit() {
+        if(name.isEmpty()||email.isEmpty()||password.isEmpty()){
+            alert("All fields are required");
+        }
+
+        const response = await axios.post("", {
+            email,
+            name, 
+            password
+        }).catch((err) => {
+            console.log("error");
+        });
+        if(response.data.error){
+            alert("error");
+        }else{
+            alert("Welcome, " + name);
+        }
+    }
+    
     return(
         <View style={styles.container}>
             <View style={{marginHorizontal: 20}}>
@@ -23,9 +43,7 @@ export default function SignUp({navigation}){
     )
 }
 
-function handleSubmit() {
-    
-}
+
 
 const styles = StyleSheet.create({
     input: {
