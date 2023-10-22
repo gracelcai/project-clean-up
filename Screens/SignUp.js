@@ -25,7 +25,9 @@ export default function SignUp({navigation}){
 }
 
 function handleSubmit() {
-
+    return(
+        <Home/>
+    )
 }
 
 const styles = StyleSheet.create({
