@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import Login from './login.js';
-import Home from '/.home.js';
+import Home from './home.js';
 
 
 export default function SignUp({navigation}){
@@ -25,7 +25,7 @@ export default function SignUp({navigation}){
 }
 
 function handleSubmit() {
-        
+
 }
 
 const styles = StyleSheet.create({
