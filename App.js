@@ -8,6 +8,8 @@ import SignUp from './Screens/SignUp';
 import Login from './Screens/login';
 import Home from './Screens/home';
 
+
+
 const stack = createNativeStackNavigator();
 
 export default function App() {
@@ -15,7 +17,7 @@ export default function App() {
     //<View><Text>Hello</Text></View>
     //<SignUp/>
    <NavigationContainer>
-    <stack.Navigator initalRouteName = 'Home'>
+    <stack.Navigator initalRouteName = 'Sign Up'>
       <stack.Screen name = "Sign Up" component={SignUp} options={{headerShown: false}}/>
       <stack.Screen name = "Login" component={Login} options={{headerShown: false}}/>
       <stack.Screen name = "Home" component={Home} options={{headerShown: false}}/>
