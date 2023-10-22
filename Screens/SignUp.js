@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import Login from './login.js';
+import Home from '/.home.js';
 
 
 export default function SignUp({navigation}){
@@ -15,10 +17,15 @@ export default function SignUp({navigation}){
                 <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)}/>
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={alert(email + " " + name + " " + password)}>Sign Up</Pressable>
+                <Pressable style={styles.button} onPress={handleSubmit()}>Sign Up</Pressable>
+                <Text>Already have an account? <href src={<Login/>}>Login.</href></Text>
             </View>
         </View>
     )
+}
+
+function handleSubmit() {
+        
 }
 
 const styles = StyleSheet.create({
