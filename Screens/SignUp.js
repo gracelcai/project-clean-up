@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+//import { Link } from "expo-router"
 import Login from './login.js';
 import Home from './home.js';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 export default function SignUp({navigation}){
@@ -17,17 +20,15 @@ export default function SignUp({navigation}){
                 <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)}/>
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={handleSubmit()}>Sign Up</Pressable>
-                <Text>Already have an account? <href src={<Login/>}>Login.</href></Text>
+                <Pressable style={styles.button} onPress={() => {navigation.navigate('Home')}}>Sign Up</Pressable>
+                <Text>Already have an account? <Text onPress={() => navigation.navigate('Login')}>Login.</Text></Text>
             </View>
         </View>
     )
 }
 
 function handleSubmit() {
-    return(
-        <Home/>
-    )
+    
 }
 
 const styles = StyleSheet.create({
@@ -49,9 +50,15 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     button: {
-        marginTop: 24,
-        fontSize: 20,
-        backgroundColor: "#BFCEB8",
-        justifyContent: "center"
+        marginBottom: 24,
+        marginTop: 28,
+        fontSize: 26,
+        backgroundColor: "#C5E2FF",
+        justifyContent: "center",
+        borderRadius: 15,
+        height: 30,
+        marginHorizontal: 15,
+        textAlign: 'center',
+        paddingVertical:16
     }
 });
