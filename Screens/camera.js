@@ -32,25 +32,41 @@ export default function WebCamera() {
 	}
 
 	return (
-		<View style={styles.container}>
-			<Camera style={styles.camera} type={type}>
-				<View style={styles.buttonContainer}>
-					<TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-						<Text style={styles.text}>Flip Camera</Text>
-					</TouchableOpacity>
-				</View>
-			</Camera>
+		<View>
+			<View style={styles.container}>
+				<Camera style={styles.camera} type={type}>
+					<View style={styles.buttonContainer}>
+						<TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+							<Text style={styles.text}>Flip Camera</Text>
+						</TouchableOpacity>
+					</View>
+				</Camera>
+			</View>
+			<View
+				style={{
+					// position: "absolute",
+					bottom: 0,
+					left: 0,
+					right: 0,
+					marginBottom: 20,
+					backgroundColor: "#C5E2FF",
+				}}
+			>
+				<Navbar />
+			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		// flex: 1,
 		justifyContent: "center",
+		height: 800,
 	},
 	camera: {
-		flex: 1,
+		// flex: 1,
+		height: 800,
 	},
 	buttonContainer: {
 		flex: 1,
