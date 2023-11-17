@@ -26,17 +26,33 @@ export default function SignUp({navigation}){
             alert("Welcome, " + name);
         }
     }
+
+    const onPressSignUp = async (name, email, password) => {
+        if(name.length == 0 || email.length == 0 || password.length == 0 ){
+            alert("All fields are required");
+        }else{
+            console.log(name + " is trying to sign up with: " + email + ", with password: " + password);
+            try{
+                await signUp(email, password);
+                login(email, password);
+            }catch (error){
+                const message = "Sign up failed: " + error.message ;
+                console.error(message);
+                alert(message);
+            }
+        }
+    };
     
     return(
         <View style={styles.container}>
             <View style={{marginHorizontal: 20}}>
-                <Text style={styles.headers}>Email</Text>
-                <TextInput style={styles.input} value={email} onChangeText={(text) => setEmail(text)} />
                 <Text style={styles.headers}>Name</Text>
-                <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)}/>
+                <TextInput style={styles.input} value={name} onChangeText={(text) => setName(text)} />
+                <Text style={styles.headers}>Email</Text>
+                <TextInput style={styles.input} value={email} onChangeText={(text) => setEmail(text)}/>
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={() => {navigation.navigate('Home')}}>Sign Up</Pressable>
+                <Pressable style={styles.button} onPress={() => {onPressSignUp(name, email, password)}}>Sign Up</Pressable>
                 <Text>Already have an account? <Text onPress={() => navigation.navigate('Login')}>Login.</Text></Text>
             </View>
         </View>
