@@ -7,7 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignUp from "./Screens/SignUp";
 import Login from "./Screens/login";
 import Home from "./Screens/home";
-import Camera from "./Screens/camera";
+// import Camera from "./Screens/camera";
+import Classifier from "./Screens/classifier";
 
 const stack = createNativeStackNavigator();
 
@@ -16,7 +17,7 @@ export default function App() {
 		//<View><Text>Hello</Text></View>
 		//<SignUp/>
 		<NavigationContainer>
-			<stack.Navigator initalRouteName="Home">
+			<stack.Navigator initalRouteName="Camera">
 				<stack.Screen
 					name="Sign Up"
 					component={SignUp}
@@ -34,7 +35,7 @@ export default function App() {
 				/>
 				<stack.Screen
 					name="Camera"
-					component={Camera}
+					component={Classifier}
 					options={{ headerShown: false }}
 				/>
 			</stack.Navigator>
