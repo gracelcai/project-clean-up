@@ -3,7 +3,7 @@ import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import axios from "axios";
 
 
-export default function SignUp({navigation}){
+export default function SignUp({navigation, handlesSign}){
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
@@ -32,14 +32,24 @@ export default function SignUp({navigation}){
             alert("All fields are required");
         }else{
             console.log(name + " is trying to sign up with: " + email + ", with password: " + password);
-            try{
-                await signUp(email, password);
-                login(email, password);
-            }catch (error){
-                const message = "Sign up failed: " + error.message ;
-                console.error(message);
-                alert(message);
-            }
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                  const user = userCredential.user;
+                  console.log("User signed", user);
+                })
+                .catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  console.log("Error!");
+                });
+            // try{
+            //     await signUp(email, password);
+            //     login(email, password);
+            // }catch (error){
+            //     const message = "Sign up failed: " + error.message ;
+            //     console.error(message);
+            //     alert(message);
+            // }
         }
     };
     
