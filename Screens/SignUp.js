@@ -19,6 +19,7 @@ export default function SignUp({navigation}){
                 .then((userCredential) => {
                   const user = userCredential.user;
                   console.log("User signed", user);
+                  navigation.navigate('Home');
                 })
                 .catch((error) => {
                   const errorCode = error.code;
