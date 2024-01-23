@@ -1,5 +1,3 @@
-//const { MongoClient } = require('mongodb');
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { React } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,14 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './Screens/SignUp';
 import Login from './Screens/login';
 import Home from './Screens/home';
-
-// import {
-//   AppProvider,
-//   UserProvider,
-//   RealmProvider,
-//   useAuth,
-// } from "@realm/react";
-// Set up AppProvider, UserProvider, and RealmProvider for your app
 
 const stack = createNativeStackNavigator();
 
@@ -31,23 +21,6 @@ export default function App() {
    </NavigationContainer>
   );
 }
-// Navigation.registerComponent('Sign Up', () => SignUp);
-// Navigation.events().registerAppLaunchedListener(async () => {
-//   Navigation.setRoot({
-//     root: {
-//       stack: {
-//         children: [
-//           {
-//             component: {
-//               name: 'Sign Up'
-//             }
-//           }
-//         ]
-//       }
-//     }
-//   });
-// });
-
 
 const styles = StyleSheet.create({
 	container: {

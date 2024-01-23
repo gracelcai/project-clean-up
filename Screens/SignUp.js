@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import axios from "axios";
 import { app } from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 
-export default function SignUp({navigation, handlesSign}){
+export default function SignUp({navigation}){
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
