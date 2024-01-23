@@ -1,37 +1,21 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import axios from "axios";
+import { app } from '../firebaseConfig';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 
 export default function SignUp({navigation, handlesSign}){
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    
-    async function handleSubmit() {
-        if(name.isEmpty()||email.isEmpty()||password.isEmpty()){
-            alert("All fields are required");
-        }
-
-        const response = await axios.post("", {
-            email,
-            name, 
-            password
-        }).catch((err) => {
-            console.log("error");
-        });
-        if(response.data.error){
-            alert("error");
-        }else{
-            alert("Welcome, " + name);
-        }
-    }
 
     const onPressSignUp = async (name, email, password) => {
         if(name.length == 0 || email.length == 0 || password.length == 0 ){
             alert("All fields are required");
         }else{
             console.log(name + " is trying to sign up with: " + email + ", with password: " + password);
+                const auth = getAuth(app);
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                   const user = userCredential.user;
@@ -40,16 +24,11 @@ export default function SignUp({navigation, handlesSign}){
                 .catch((error) => {
                   const errorCode = error.code;
                   const errorMessage = error.message;
-                  console.log("Error!");
+                  if(error.code == "auth/email-already-in-use"){
+                    alert("User already has this email");
+                  }
+                  console.log("Error!", error.code);
                 });
-            // try{
-            //     await signUp(email, password);
-            //     login(email, password);
-            // }catch (error){
-            //     const message = "Sign up failed: " + error.message ;
-            //     console.error(message);
-            //     alert(message);
-            // }
         }
     };
     
