@@ -19,7 +19,7 @@ export default function SignUp({navigation}){
                 .then((userCredential) => {
                   const user = userCredential.user;
                   console.log("User signed", user);
-                  navigation.navigate('Home');
+                  navigation.navigate('Home Page');
                 })
                 .catch((error) => {
                   const errorCode = error.code;
@@ -41,7 +41,7 @@ export default function SignUp({navigation}){
                 <TextInput style={styles.input} value={email} onChangeText={(text) => setEmail(text)}/>
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={() => {onPressSignUp(name, email, password)}}>Sign Up</Pressable>
+                <Pressable style={styles.button} onPress={() => {onPressSignUp(name, email, password)}}><Text>Sign Up</Text></Pressable>
                 <Text>Already have an account? <Text onPress={() => navigation.navigate('Login')}>Login.</Text></Text>
             </View>
         </View>
