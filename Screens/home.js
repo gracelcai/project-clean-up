@@ -12,7 +12,7 @@ import { FlatList } from "react-native-web";
 import Navbar from "./navbar";
 import Article from "./article.js";
 
-export default function Home({ navigation }) {
+export default function Home({navigation}) {
 	const articles = [
 		{
 			id: 1,
@@ -65,7 +65,7 @@ export default function Home({ navigation }) {
 			</View>
 			<View
 				style={{
-					position: "absolute",
+					position: "fixed",
 					bottom: 0,
 					left: 0,
 					right: 0,

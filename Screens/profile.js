@@ -27,7 +27,7 @@ export default function Profile({ navigation }) {
         <View style={{padding: '75%'}}>
 
         </View>
-        <View style={{position: 'absolute', bottom: 0, left:0, right: 0, marginBottom: 0, backgroundColor: '#C5E2FF' }}>
+        <View style={{position: 'fixed', bottom: 0, left:0, right: 0, marginBottom: 0, backgroundColor: '#C5E2FF' }}>
       <Navbar />
     </View>
     </View>
