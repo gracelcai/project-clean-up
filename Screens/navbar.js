@@ -18,7 +18,7 @@ export default function Navbar() {
 	const nav = useNavigation();
 
 	const toHome = () => {
-		nav.navigate("Home");
+		nav.navigate("Home Page");
 	};
 
 	const toProfile = () => {
