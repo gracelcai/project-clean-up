@@ -33,7 +33,7 @@ export default function Login({navigation}){
                 <TextInput style={styles.input} value={email} onChangeText={(text) => setEmail(text)} />
                 <Text style={styles.headers}>Password</Text>
                 <TextInput style={styles.input} value={password} onChangeText={(text) => setPassword(text)} secureTextEntry={true} />
-                <Pressable style={styles.button} onPress={() => {onPressLogin(email, password)}}>Login</Pressable>
+                <Pressable style={styles.button} onPress={() => {onPressLogin(email, password)}}><Text>Login</Text></Pressable>
                 <Text>Need to make an account? <Text onPress={() => navigation.navigate('Sign Up')}>Sign up.</Text></Text>
             </View>
         </View>
