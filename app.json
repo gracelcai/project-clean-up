@@ -27,10 +27,11 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      
       [
-        "expo-image-picker",
+        "expo-camera",
         {
-          "photosPermission": "The app accesses your photos to run them through object detection"
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
         }
       ]
     ]

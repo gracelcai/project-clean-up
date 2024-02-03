@@ -1,22 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { React } from 'react';
-import { NavigationContainer} from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SignUp from './Screens/SignUp';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { React } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SignUp from "./Screens/SignUp";
+import Camera from "./Screens/Camera";
 
-const stack = createNativeStackNavigator;
+// const stack = createNativeStackNavigator;
 
 export default function App() {
-  return (
-    //<View><Text>Hello</Text></View>
-    <SignUp/>
-  //  <NavigationContainer>
-  //   <stack.Navigator>
-  //     <stack.Screen name = "Sign Up" component={SignUp} options={{headerShown: false}}/>
-  //   </stack.Navigator>
-  //  </NavigationContainer>
-  );
+	return (
+		//<View><Text>Hello</Text></View>
+		<Camera />
+		//  <NavigationContainer>
+		//   <stack.Navigator>
+		//     <stack.Screen name = "Sign Up" component={SignUp} options={{headerShown: false}}/>
+		//   </stack.Navigator>
+		//  </NavigationContainer>
+	);
 }
 // Navigation.registerComponent('Sign Up', () => SignUp);
 // Navigation.events().registerAppLaunchedListener(async () => {
@@ -34,7 +35,6 @@ export default function App() {
 //     }
 //   });
 // });
-
 
 const styles = StyleSheet.create({
 	container: {
