@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { Text, View,SafeAreaView, StyleSheet, Pressable, TextInput } from 'react-native';
-import { BsFillCircleFill } from 'react-icons/bs';
+import { FontAwesome } from '@expo/vector-icons';
 import Navbar from './navbar';
+import { App } from "../firebaseConfig";
+import { getAuth } from "firebase/auth";
 
 export default function Profile({ navigation }) {
-
+  const userName = "Name";//getAuth(App).currentUser.name;
+  const userEmail = getAuth(App).currentUser.email;
   return (
     <View>
         <View style={styles.user}>
-          <BsFillCircleFill style={styles.userPfp}/>
+          {/*Need to fix styling*/}
+          <View style={styles.userPfp}>
+          <FontAwesome name="circle" size={160} color="black" />
+          </View>
           <View>
-            <Text style={styles.userText}>Name</Text>
-            <Text style={styles.userText}>Email</Text>
+            <Text style={styles.userText}>{userName}</Text>
+            <Text style={styles.userText}>{userEmail}</Text>
           </View>
         </View>
         <View style={styles.stats}>
@@ -28,7 +34,7 @@ export default function Profile({ navigation }) {
 
         </View>
         <View style={{position: 'fixed', bottom: 0, left:0, right: 0, marginBottom: 0, backgroundColor: '#C5E2FF' }}>
-      <Navbar />
+          <Navbar/>
     </View>
     </View>
   );
@@ -44,11 +50,12 @@ const styles = StyleSheet.create({
     width: 160,
     height: 160,
     marginRight: 30,
-    marginLeft: 30
+    marginLeft: 30,
+    marginTop: 20
   },
   userText: {
     fontSize: 24,
-    marginTop: 15
+    marginTop: 25
   },
   stats:{
     display: 'flex',

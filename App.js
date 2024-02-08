@@ -7,7 +7,7 @@ import SignUp from './Screens/SignUp';
 import Login from './Screens/login';
 import HomePage from './Screens/homepage';
 import Profile from './Screens/profile';
-import Trash from './Screens/camera';
+// import Trash from './Screens/camera';
 
 const stack = createNativeStackNavigator();
 

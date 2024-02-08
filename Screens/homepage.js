@@ -8,9 +8,9 @@ import {
 	Pressable,
 	TextInput,
 } from "react-native";
-import { FlatList } from "react-native-web";
-import Navbar from "./navbar";
+import { FlatList } from "react-native";
 import Article from "./article.js";
+import Navbar from "./navbar.js";
 
 export default function HomePage({navigation}) {
 	const articles = [
@@ -62,8 +62,7 @@ export default function HomePage({navigation}) {
 						/>
 					)}
 				/>
-			</View>
-			<View
+				<View
 				style={{
 					position: "fixed",
 					bottom: 0,
@@ -72,8 +71,11 @@ export default function HomePage({navigation}) {
 					marginTop: 20,
 					backgroundColor: "#C5E2FF",
 				}}
+				
 			>
-				<Navbar />
+				<Navbar/>
+			</View>
+				
 			</View>
 		</View>
 	);

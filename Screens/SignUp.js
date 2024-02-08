@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import { app } from '../firebaseConfig';
+import { App } from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 
@@ -14,7 +14,7 @@ export default function SignUp({navigation}){
             alert("All fields are required");
         }else{
             console.log(name + " is trying to sign up with: " + email + ", with password: " + password);
-                const auth = getAuth(app);
+                const auth = getAuth(App);
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                   const user = userCredential.user;
