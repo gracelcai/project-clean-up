@@ -2,12 +2,22 @@ import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import { App } from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, setDoc, collection, addDoc, addDocRef} from "firebase/firestore";
+import { db } from "../database/firestore";
+
+
+async function writeData(collection, data){
+    const addDocRef = await addDoc(collection, data);
+    console.log('Document written with ID: ', addDocRef.id);
+}
 
 
 export default function SignUp({navigation}){
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const col = collection(db, "users");
+    
 
     const onPressSignUp = async (name, email, password) => {
         if(name.length == 0 || email.length == 0 || password.length == 0 ){
@@ -18,8 +28,16 @@ export default function SignUp({navigation}){
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                   const user = userCredential.user;
+                  console.log(db.app.name);
+                  const data = {
+                    email: {email},
+                    name: {name},
+                    password: {password},
+                    points: 0
+                  };
+                  writeData(col, data);
                   console.log("User signed", user);
-                  navigation.navigate('Home Page');
+                  navigation.navigate('Home Page'); 
                 })
                 .catch((error) => {
                   const errorCode = error.code;
@@ -27,7 +45,7 @@ export default function SignUp({navigation}){
                   if(error.code == "auth/email-already-in-use"){
                     alert("User already has this email");
                   }
-                  console.log("Error!", error.code);
+                  console.log("Error!", errorMessage);
                 });
         }
     };

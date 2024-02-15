@@ -4,10 +4,13 @@ import { FontAwesome } from '@expo/vector-icons';
 import Navbar from './navbar';
 import { App } from "../firebaseConfig";
 import { getAuth } from "firebase/auth";
+import db from '../database/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function Profile({ navigation }) {
   const userName = "Name";//getAuth(App).currentUser.name;
   const userEmail = getAuth(App).currentUser.email;
+  //const points = db.collections().getDocs();
   return (
     <View>
         <View style={styles.user}>

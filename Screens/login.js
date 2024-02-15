@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
-import { app } from '../firebaseConfig';
+import { App } from '../firebaseConfig';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 
@@ -10,7 +10,7 @@ export default function Login({navigation}){
 
     const onPressLogin = async (email, password) => {
         console.log("User trying to log in: " + email + ", with password: " + password);
-        const auth = getAuth(app);
+        const auth = getAuth(App);
                     signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
                       const user = userCredential.user;
