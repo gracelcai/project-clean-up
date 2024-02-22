@@ -1,16 +1,43 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { Text, View,SafeAreaView, StyleSheet, Pressable, TextInput } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Navbar from './navbar';
 import { App } from "../firebaseConfig";
 import { getAuth } from "firebase/auth";
-import db from '../database/firestore';
-import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../database/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+
+// async function getUserQuery(userQuery){
+//   return querySnapshot = await getDocs(userQuery);
+// }
 
 export default function Profile({ navigation }) {
-  const userName = "Name";//getAuth(App).currentUser.name;
-  const userEmail = getAuth(App).currentUser.email;
-  //const points = db.collections().getDocs();
+  const [userData, setUserData] = useState(null);
+  useEffect(() => {
+  const fetchUserData = async () => {
+    try{
+      const userEmail = String(getAuth(App).currentUser.email);
+      const col = collection(db, 'users');
+      console.log(String(userEmail));
+      const userQuery = query(col, where('email', '==', userEmail));
+      const querySnapshot = await getDocs(userQuery);
+      console.log();
+      querySnapshot.forEach((doc) => {
+        setUserData(doc.data());
+      });
+      console.log("User data: " + userData.name);
+    }catch(error){
+      console.log(error.message);
+    }
+    };
+
+    fetchUserData();
+  }, []);
+  //console.log("User data: " + userData.name);
+  
+  //const userName = "Name";//getAuth(App).currentUser.name;
+
   return (
     <View>
         <View style={styles.user}>
@@ -18,20 +45,36 @@ export default function Profile({ navigation }) {
           <View style={styles.userPfp}>
           <FontAwesome name="circle" size={160} color="black" />
           </View>
+          { userData ?(
           <View>
-            <Text style={styles.userText}>{userName}</Text>
-            <Text style={styles.userText}>{userEmail}</Text>
+            <Text style={styles.userText}>{userData.name}</Text>
+            <Text style={styles.userText}>{userData.email}</Text>
           </View>
+):
+<View>
+<Text style={styles.userText}>{"Loading"}</Text>
+<Text style={styles.userText}>{"Loading"}</Text>
+</View>
+}
         </View>
         <View style={styles.stats}>
-          <View> 
-            <Text style={{fontWeight: 800}}>###</Text>
+          { userData ? ( 
+          <><View>
+            <Text style={{ fontWeight: 800 }}>{userData.points}</Text>
             <Text>Points</Text>
-          </View>
-          <View>
-            <Text style={{fontWeight: 800}}>###</Text>
-            <Text>Litter Collected</Text>
-          </View>
+          </View><View>
+              <Text style={{ fontWeight: 800 }}>{userData.litter}</Text>
+              <Text>Litter Collected</Text>
+            </View></>
+          ): 
+          <><View>
+            <Text style={{ fontWeight: 800 }}>Loading</Text>
+            <Text>Points</Text>
+          </View><View>
+              <Text style={{ fontWeight: 800 }}>Loading</Text>
+              <Text>Litter Collected</Text>
+            </View></>
+        }
         </View>
         <View style={{padding: '75%'}}>
 

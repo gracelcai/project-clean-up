@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import { App } from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, setDoc, collection, addDoc, addDocRef} from "firebase/firestore";
+import { collection, addDoc, addDocRef} from "firebase/firestore";
 import { db } from "../database/firestore";
 
 
@@ -28,12 +28,12 @@ export default function SignUp({navigation}){
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                   const user = userCredential.user;
-                  console.log(db.app.name);
                   const data = {
-                    email: {email},
-                    name: {name},
-                    password: {password},
-                    points: 0
+                    email: email,
+                    name: name,
+                    password: password,
+                    points: 0,
+                    litter: 0
                   };
                   writeData(col, data);
                   console.log("User signed", user);
@@ -42,7 +42,7 @@ export default function SignUp({navigation}){
                 .catch((error) => {
                   const errorCode = error.code;
                   const errorMessage = error.message;
-                  if(error.code == "auth/email-already-in-use"){
+                  if(errorCode == "auth/email-already-in-use"){
                     alert("User already has this email");
                   }
                   console.log("Error!", errorMessage);
