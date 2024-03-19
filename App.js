@@ -4,14 +4,16 @@ import { React } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignUp from "./Screens/SignUp";
-import Camera from "./Screens/Camera";
+import CameraScreen from "./Screens/Camera";
+import Prediction from "./Screens/Prediction";
 
-// const stack = createNativeStackNavigator;
+const stack = createNativeStackNavigator;
 
 export default function App() {
 	return (
 		//<View><Text>Hello</Text></View>
-		<Camera />
+		<CameraScreen />
+
 		//  <NavigationContainer>
 		//   <stack.Navigator>
 		//     <stack.Screen name = "Sign Up" component={SignUp} options={{headerShown: false}}/>
