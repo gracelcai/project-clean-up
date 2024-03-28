@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Text, View,SafeAreaView, StyleSheet, Pressable, TextInput } from 'react-native';
+import { Text, View,SafeAreaView, StyleSheet, Pressable, TextInput, Button } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import Navbar from './navbar';
 import { App } from "../firebaseConfig";
-import { getAuth } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { db } from '../database/firestore';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 
@@ -76,9 +76,13 @@ export default function Profile({ navigation }) {
             </View></>
         }
         </View>
-        <View style={{padding: '75%'}}>
-
-        </View>
+        <>
+        <Pressable style={styles.button} onPress={() => {
+          signOut(getAuth(App))
+          navigation.navigate("Login");
+        }
+      }><Text>Sign Out</Text></Pressable>
+        </>
         <View style={{position: 'fixed', bottom: 0, left:0, right: 0, marginBottom: 0, backgroundColor: '#C5E2FF' }}>
           <Navbar/>
     </View>
@@ -110,5 +114,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingBottom: 20,
     borderBottomWidth: 1
-  }
+  },
+  button: {
+    marginBottom: 24,
+    marginTop: 28,
+    fontSize: 26,
+    backgroundColor: "#C5E2FF",
+    justifyContent: "center",
+    borderRadius: 15,
+    height: 30,
+    marginHorizontal: 15,
+    textAlign: 'center',
+    paddingVertical:16
+}
 });
