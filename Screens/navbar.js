@@ -1,16 +1,16 @@
 import * as React from "react";
+// import {
+// 	BsFillHouseFill,
+// 	BsFillCameraFill,
+// 	BsFillPersonLinesFill,
+// } from "react-native-icons/bs";
+import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+
 import {
-	BsFillHouseFill,
-	BsFillCameraFill,
-	BsFillPersonLinesFill,
-} from "react-icons/bs";
-import {
-	Text,
 	View,
-	SafeAreaView,
 	StyleSheet,
 	Pressable,
-	TextInput,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -18,7 +18,7 @@ export default function Navbar() {
 	const nav = useNavigation();
 
 	const toHome = () => {
-		nav.navigate("Home");
+		nav.navigate("Home Page");
 	};
 
 	const toProfile = () => {
@@ -40,13 +40,14 @@ export default function Navbar() {
 			}}
 		>
 			<Pressable onPress={toHome}>
-				<BsFillHouseFill style={styles.icon} />
+
+			<FontAwesome name="home" size={46} color="black" />				
 			</Pressable>
 			<Pressable onPress={toTrash}>
-				<BsFillCameraFill style={styles.icon} />
+			<Ionicons name="trash-sharp" size={46} color="black" />
 			</Pressable>
 			<Pressable onPress={toProfile}>
-				<BsFillPersonLinesFill style={styles.icon} />
+				<Ionicons name="person" size={46} color="black" />
 			</Pressable>
 		</View>
 	);

@@ -8,11 +8,11 @@ import {
 	Pressable,
 	TextInput,
 } from "react-native";
-import { FlatList } from "react-native-web";
-import Navbar from "./navbar";
+import { FlatList } from "react-native";
 import Article from "./article.js";
+import Navbar from "./navbar.js";
 
-export default function Home({ navigation }) {
+export default function HomePage({navigation}) {
 	const articles = [
 		{
 			id: 1,
@@ -52,7 +52,7 @@ export default function Home({ navigation }) {
 		<View style={{ backgroundColor: "white" }}>
 			<View style={{ marginBottom: 100 }}>
 				<FlatList
-					style={{ width: "max-width", height: 800 }}
+					style={{ width: "auto", height: 800 }}
 					data={articles}
 					renderItem={({ item }) => (
 						<Article
@@ -62,18 +62,20 @@ export default function Home({ navigation }) {
 						/>
 					)}
 				/>
-			</View>
-			<View
+				<View
 				style={{
-					position: "absolute",
+					position: "fixed",
 					bottom: 0,
 					left: 0,
 					right: 0,
-					marginTop: 20,
+					marginTop: 40,
 					backgroundColor: "#C5E2FF",
 				}}
+				
 			>
-				<Navbar />
+				<Navbar/>
+			</View>
+				
 			</View>
 		</View>
 	);
